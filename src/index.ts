@@ -15,6 +15,8 @@ const main = async () => {
 
     const bot = new Telegraf(BOT_API_TOKEN);
 
+    console.log(chalk.green("Bot is running"));
+
     bot.start((ctx) =>
       ctx.reply("Welcome tally app!", {
         reply_markup: {
