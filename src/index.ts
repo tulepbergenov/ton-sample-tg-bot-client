@@ -1,19 +1,19 @@
 import { Telegraf } from "telegraf";
 import dotenv from "dotenv";
-import { resolve } from "path";
+import { resolve, join } from "path";
 import chalk from "chalk";
 
-dotenv.config({ path: resolve(__dirname, ".env.local") });
+dotenv.config({ path: resolve(join(__dirname, "..", ".env.local")) });
 
-const BOT_API_KEY = process.env.BOT_API_TOKEN;
+const BOT_API_TOKEN = process.env.BOT_API_TOKEN;
 
 const main = async () => {
   try {
-    if (!BOT_API_KEY) {
-      throw new Error("BOT_API_KEY is not defined");
+    if (!BOT_API_TOKEN) {
+      throw new Error("BOT_API_TOKEN is not defined");
     }
 
-    const bot = new Telegraf(BOT_API_KEY);
+    const bot = new Telegraf(BOT_API_TOKEN);
 
     bot.start((ctx) =>
       ctx.reply("Welcome tally app!", {
